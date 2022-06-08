@@ -6,11 +6,12 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:50:18 by mliew             #+#    #+#             */
-/*   Updated: 2022/06/04 16:51:58 by mliew            ###   ########.fr       */
+/*   Updated: 2022/06/08 21:50:09 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 char	*get_next_line(int fd);
 
