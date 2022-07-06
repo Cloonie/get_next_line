@@ -6,21 +6,19 @@
 #    By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 11:34:24 by mliew             #+#    #+#              #
-#    Updated: 2022/07/04 18:09:25 by mliew            ###   ########.fr        #
+#    Updated: 2022/07/06 17:53:01 by mliew            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra -I get_next_line.h -D BUFFER_SIZE=42
-AR		=	ar rcs
-NAME	=	get_next_line.a
-SRCS	=	get_next_line.c get_next_line_utils.c
-OBJS	=	$(SRCS:.c=.o)
+CFLAGS	=	-Wall -Werror -Wextra -I get_next_line.h -D BUFFER_SIZE=2
+NAME	=	get_next_line.c
+SRCS	=	get_next_line_utils.c
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME):
+	$(CC) $(CFLAGS) $(NAME) $(SRCS)
 
 clean:
 	$(RM) $(OBJS)
@@ -30,4 +28,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re $(NAME)
