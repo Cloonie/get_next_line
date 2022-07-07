@@ -6,28 +6,35 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:52:03 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/06 17:55:01 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/07 23:03:10 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	appendline(
-
 char	*get_next_line(int fd)
 {
-	char	buf[BUFFER_SIZE];
-	char	*tmp;
-	int		red;
+	static char	buf[BUFFER_SIZE];
+	char	**res;
+	int		r;
+	int		i;
 
 	if (fd < 0)
-		return(NULL)
-	
-	while (r = read(fd, buf, BUFFER_SIZE) > 0)
-	
-	tmp = ft_strjoin(tmp, ft_strchr(buf, '\n');
-	tmp = ft_strjoin(tmp, "\0");
-	return (tmp);
+		return(NULL);
+	while ((r = read(fd, buf, BUFFER_SIZE)) > 0)
+	{
+		i = 0;
+		res[i] = "";
+		if (ft_strchr(buf, '\n'))
+		{
+			res[i] = ft_strjoin(res[i], ft_strchr(buf, '\n'));
+			res[i] = ft_strjoin(res[i], "\0");
+		}
+		else
+			res[i] = ft_strjoin(res[i], buf);
+		i++;
+	}
+	return (*res);
 }
 
 int	main(void)
