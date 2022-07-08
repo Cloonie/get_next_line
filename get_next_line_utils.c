@@ -6,30 +6,34 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:53:40 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/08 17:55:51 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/08 22:42:11 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *s)
+int	ft_strlen(const char *s, char c)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
+	while (s[i] != c)
 		i++;
 	return (i);
 }
 
-int	ft_nlstrlen(const char *s)
+int	check_char(const char *s, char c)
 {
 	int i;
 
 	i = 0;
-	while (s[i] != '\n')
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (1);
 		i++;
-	return (i); 
+	}
+	return (0); 
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -49,7 +53,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
 	i = 0;
-	array = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	array = malloc(sizeof(char) * (ft_strlen(s1, '\0') + ft_strlen(s2, '\0') + 1));
 	if (array == NULL)
 		return (NULL);
 	while (*s1)
@@ -74,7 +78,7 @@ char	*ft_strdup(const char *s1)
 	int		i;
 
 	i = 0;
-	array = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	array = malloc(sizeof(char) * (ft_strlen(s1, '\0') + 1));
 	if (array == NULL)
 		return (NULL);
 	while (s1[i])
@@ -112,9 +116,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (s == NULL)
 		return (NULL);
-	if ((unsigned int)ft_strlen(s) < start)
+	if ((unsigned int)ft_strlen(s, '\0') < start)
 		return (ft_strdup(""));
-	new_len = ft_strlen(s + start);
+	new_len = ft_strlen(s + start, '\0');
 	if (new_len < len)
 		len = new_len;
 	res = malloc(sizeof(char) * len + 1);

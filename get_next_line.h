@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:50:18 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/08 16:25:36 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/08 22:40:22 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 
 char	*get_next_line(int fd);
 
-int		ft_strlen(const char *s);
+int		ft_strlen(const char *s, char c);
+int		check_char(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);

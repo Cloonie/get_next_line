@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:52:03 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/08 17:55:46 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/08 22:52:11 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	*get_next_line(int fd)
 	while ((r = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		stash = ft_strjoin(stash, buf);
-		if (ft_strchr(stash, '\n'))
+		if (check_char(stash, '\n'))
 		{
-			line = ft_substr(stash, 0, ft_nlstrlen(stash));
+			line = ft_substr(stash, 0, ft_strlen(stash, '\n'));
 		}
 	}
 	return (line);
