@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:53:40 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/06 17:48:48 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/08 17:55:51 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ int	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+int	ft_nlstrlen(const char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i] != '\n')
+		i++;
+	return (i); 
 }
 
 char	*ft_strchr(const char *s, int c)

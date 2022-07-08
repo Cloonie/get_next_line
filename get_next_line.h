@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:50:18 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/06 17:49:06 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/08 16:25:36 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		ft_nlstrlen(const char *s);
 
 #endif
