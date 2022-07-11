@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:50:18 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/09 13:50:08 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/11 16:05:08 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,16 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <string.h>
 # include <stdlib.h>
+# include <limits.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 
 char	*get_next_line(int fd);
 
-int		ft_strlen(const char *s, char c);
-int		check_char(const char *s, char c);
+int		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *s1);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_nlstrlen(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 

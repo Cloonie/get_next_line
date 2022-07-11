@@ -6,19 +6,22 @@
 #    By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 11:34:24 by mliew             #+#    #+#              #
-#    Updated: 2022/07/09 13:34:21 by mliew            ###   ########.fr        #
+#    Updated: 2022/07/11 17:37:50 by mliew            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	gcc
-CFLAGS	=	-I get_next_line.h -D BUFFER_SIZE=3 #-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra -I get_next_line.h -D BUFFER_SIZE=3
 NAME	=	get_next_line.c
 SRCS	=	get_next_line_utils.c
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(NAME) $(SRCS)
+	$(CC) $(CFLAGS) $(NAME) $(SRCS) && ./a.out
+
+others:
+	$(CC) $(CFLAGS) othersgnl.c get_next_line_utils.c && ./a.out
 
 clean:
 	$(RM) $(OBJS)
