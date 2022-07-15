@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:52:03 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/11 22:02:00 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/15 15:05:44 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ char	*take_line(char *buffer)
 	i = 0;
 	if (!buffer[i])
 		return (NULL);
-	while (buffer[i] && buffer[i] != '\n')
+	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (buffer[i] != '\0' && buffer[i] != '\n')
 	{
 		line[i] = buffer[i];
 		i++;
 	}
-	if (buffer[i] && buffer[i] == '\n')
+	if (buffer[i] != '\0' && buffer[i] == '\n')
 		line[i++] = '\n';
 	return (line);
 }
@@ -91,18 +91,22 @@ char	*read_file(int fd, char *new)
 	return (new);
 }
 
+// get_next_line reads BUFFER_SIZE until buffer contains a '\n'
+// then it takes the string until '\n' and returns it
+// it also takes the rest of the string after '\n' in buffer and overwrites 
+// itself so that the next time it continues there as it is a static variable
 char	*get_next_line(int fd)
 {
-	static char	*buf[512];
+	static char	*buf;
 	char		*line;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buf[fd] = read_file(fd, buf[fd]);
-	if (!buf[fd])
+	buf = read_file(fd, buf);
+	if (!buf)
 		return (NULL);
-	line = take_line(buf[fd]);
-	buf[fd] = continue_next(buf[fd]);
+	line = take_line(buf);
+	buf = continue_next(buf);
 	return (line);
 }
 

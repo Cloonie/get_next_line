@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:50:18 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/11 16:05:08 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/15 15:01:32 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
-# include <sys/types.h>
-# include <sys/uio.h>
 
 char	*get_next_line(int fd);
 

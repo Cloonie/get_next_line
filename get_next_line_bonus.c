@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:52:03 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/11 22:02:00 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/15 15:05:33 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-// joins str1 with str2 in temp and then frees str1
+// joins str1 with str2 in temp and then frees str1 to prevent leaks
 char	*join_free(char *str1, char *str2)
 {
 	char	*temp;
@@ -30,7 +30,7 @@ char	*continue_next(char *buffer)
 	int		j;
 
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
 	{
@@ -91,11 +91,15 @@ char	*read_file(int fd, char *new)
 	return (new);
 }
 
+// get_next_line reads BUFFER_SIZE until buffer contains a '\n'
+// then it takes the string until '\n' and returns it
+// it also takes the rest of the string after '\n' in buffer and overwrites 
+// itself so that the next time it continues there as it is a static variable
 char	*get_next_line(int fd)
 {
-	static char	*buf[512];
+	static char	*buf[OPEN_MAX];
 	char		*line;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buf[fd] = read_file(fd, buf[fd]);
@@ -108,19 +112,19 @@ char	*get_next_line(int fd)
 
 // int	main(void)
 // {
-// 	int	fd1 = open("text.txt", O_RDONLY);
-// 	int	fd2 = open("text2.txt", O_RDONLY);
-// 	int	fd3 = open("text3.txt", O_RDONLY);
-// 	printf("%s", get_next_line(fd1));
-// 	printf("%s", get_next_line(fd2));
-// 	printf("%s", get_next_line(fd3));
-// 	printf("%s", get_next_line(fd1));
-// 	printf("%s", get_next_line(fd2));
-// 	printf("%s", get_next_line(fd3));
-// 	printf("%s", get_next_line(fd1));
-// 	printf("%s", get_next_line(fd2));
-// 	printf("%s", get_next_line(fd3));
-// 	printf("%s", get_next_line(fd1));
-// 	printf("%s", get_next_line(fd2));
-// 	printf("%s", get_next_line(fd3));
+	// int	fd1 = open("text.txt", O_RDONLY);
+	// int	fd2 = open("text2.txt", O_RDONLY);
+	// int	fd3 = open("text3.txt", O_RDONLY);
+	// printf("%s", get_next_line(fd1));
+	// printf("%s", get_next_line(fd2));
+	// printf("%s", get_next_line(fd3));
+	// printf("%s", get_next_line(fd1));
+	// printf("%s", get_next_line(fd2));
+	// printf("%s", get_next_line(fd3));
+	// printf("%s", get_next_line(fd1));
+	// printf("%s", get_next_line(fd2));
+	// printf("%s", get_next_line(fd3));
+	// printf("%s", get_next_line(fd1));
+	// printf("%s", get_next_line(fd2));
+	// printf("%s", get_next_line(fd3));
 // }
