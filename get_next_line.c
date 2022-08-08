@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:52:03 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/15 15:14:52 by mliew            ###   ########.fr       */
+/*   Updated: 2022/08/08 15:03:14 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*read_file(int fd, char *new)
 		if (ft_strchr(new, '\n'))
 			break ;
 	}
-	free(buffer);
+	// free(buffer);
 	return (new);
 }
 
@@ -98,16 +98,16 @@ char	*read_file(int fd, char *new)
 char	*get_next_line(int fd)
 {
 	static char	*buf;
-	char		*line;
+	// char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buf = read_file(fd, buf);
 	if (!buf)
 		return (NULL);
-	line = take_line(buf);
-	buf = continue_next(buf);
-	return (line);
+	// line = take_line(buf);
+	// buf = continue_next(buf);
+	return (buf);
 }
 
 // int	main(void)
@@ -115,7 +115,7 @@ char	*get_next_line(int fd)
 // 	int	fd1 = open("text.txt", O_RDONLY);
 // 	int	fd2 = open("text2.txt", O_RDONLY);
 // 	int	fd3 = open("text3.txt", O_RDONLY);
-// 	printf("%s", get_next_line(fd1));
+// 	printf("%s\n", get_next_line(fd1));
 // 	printf("%s", get_next_line(fd2));
 // 	printf("%s", get_next_line(fd3));
 // 	printf("%s", get_next_line(fd1));
